@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id = "root"></div>
+</body>
+<!-- react를 사용하기 위해서는 import를 먼저 해야한다. -->
+<!-- HTML과 상호작용하는 것 -->
+<script src ="https://unpkg.com/react@18/umd/react.development.js"></script>
+<!-- react element를 HTML에 올려주는 역할을 한다.-->
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+<!-- 내가 원하는 코드를 작성한다. -->
+<script>
+  const root = document.getElementById("root");
+  // createElement의 인수는 HTML 요소의 이름과 같아야 한다.
+  // 1.생성할  HTML 요소 2. 요소의 property 3. 내용
+  const span = React.createElement("span", {id: "s-span"}, "Hello I'm a span"); // HTML span 요소 생성
+
+  // render은 React 로 만든 요소를 HTML에 추가하는 것 즉 사용자에게 보여주는 것이다.
+  ReactDOM.render(span,  root) // 생성한 span 요소를 root에 넣는다.
+  // react는 javascript가 element를 생성하고 그 것을 HTML로 변역한다.
+  // JS -> React 가 번역 함 -> HTML 요소 추가
+</script>
+</html>

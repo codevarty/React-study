@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <span>Total clicks: 0</span>
+  <button id ="btn">Click me</button>
+</body>
+<script>
+  let counter =0;
+  // HTML의 요소들을 JS로 가져온다.
+  const button = document.getElementById("btn");
+  const span = document.querySelector("span");
+  function handleClick() {
+    counter = counter + 1;
+    span.innerText =`Total clicks: ${counter}`;
+  }
+  // 이벤트를 준다.
+  button.addEventListener("click", handleClick)
+
+  // JS는 HTML요소를 수정하는 것이다.
+  // HTML -> JS로 가져와서 수정
+</script>
+</html>
