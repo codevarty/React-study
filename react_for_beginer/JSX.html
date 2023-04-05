@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="root"></div>
+  <script src ="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.21.4/babel.min.js"></script>
+  <!--스크립트에 명시적으로 적어줘야 한다,-->
+  <script type="text/babel">
+    // Babel은 JSX 코드를 웹페이지에서 이해할 수 있는 형태로 바꾼다.
+    // JSX는 자바스크립트의 확장 문법이다. 이해하기 굉장히 쉬움
+    // React의 createElement 보다 더 간단한 HTML요소 생성이 가능함.
+    const root = document.getElementById("root");
+    //HTML과 굉장히 비슷하다. 추가적으로 React의 event listener를 추가 할 수 있다.
+    const Title = <h3 id="title" onMouseEnter= {()=> console.log("mouse enter")}>Hello I'm a Title</h3>
+
+    const Button = <button style={{
+      backgroundColor: "tomato"
+    }} onClick={()=> console.log("I'm clicked")}>Click me!</button>
+
+
+    const container = React.createElement("div", null, [Title, Button])
+    ReactDOM.createRoot(root).render(container);
+  </script>
+</body>
+</html>
