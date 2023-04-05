@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="root"></div>
+  <script src ="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.21.4/babel.min.js"></script>
+
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    // 일반 함수
+    function Title() {
+      return (
+      <h3 id="title" onMouseEnter= {()=> console.log("mouse enter")}>Hello I'm a Title</h3>
+      );
+    }
+
+    // Arrow Function: () => return value
+    // 반드시 return으로 반환을 해줘야 한다.
+    const Button = () => {
+      return (
+        <button style={{
+        backgroundColor: "tomato"
+      }} onClick={()=> console.log("I'm clicked")}>Click me!</button>
+      );
+    }
+
+    // Container을 JSX로 만드는 방법
+    //Container내부에 Title Button 만 입력하면 텍스트로 인식 한다.
+    // JSX 변수를 대문자로 지정하는 이유: 소문자로 적으면 JSX와 React가 HTML 요소로 인식하기 때문
+    const Container =() => {
+      return (<div>
+      <Title />
+      <Button />
+      </div>);}
+      // React에 랜더링 할 때 Container을 함수로 사용이 가능하다.
+    ReactDOM.createRoot(root).render(<Container />);
+  </script>
+</body>
+</html>
