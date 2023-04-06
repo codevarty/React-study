@@ -10,24 +10,36 @@
     const root = document.getElementById("root");
 
     // 글자 수를 나타내는 변수
-    let count = 0;
+    // let count = 0;
     // {변수명} 으로 변수를 넣을 수 있다.
-    function countUp() {
+    // 좋은 방법이 아니다.
+/*     function countUp() {
       count = count+ 1;
       //리 랜더링한다.
       render();
-    }
-    function render() {
-      ReactDOM.createRoot(root).render(<Container />);
-    }
+    } */
+    // function render() {
+    //   ReactDOM.createRoot(root).render(<Container />);
+    // }
     const Container =() => {
+      // useState(초기값)은 배열을 값을 가짐: [데이터, 데이터를 가공하는 함수]
+      const [counter, setCounter] = React.useState(0); 
+
+      const onClick = () => {
+        // setCount 함수는 counter 데이터를 변환 시키고 리 랜더링 한다.
+        // counter의 값을 1씩 증가 시켜 주고 있다.
+        setCounter(counter +1)
+      };
+      // 사용자가 보게될 컴포넌트를 반환한다.
       return (<div>
-        <h3>Total clicks: {count}</h3>
-        <button onClick= {countUp}>Click me</button>
-      </div>);}
+        <h3>Total clicks: {counter}</h3>
+        <button >Click me</button>
+      </div>);
+      }
       // React에 랜더링 할 때 Container을 함수로 사용이 가능하다.
       // 맨 처음 한번만 랜더링된다. -> 버튼을 계속 클릭해도 화면은 업데이트 되지 않는다.
-      render();
+      ReactDOM.createRoot(root).render(<Container />);
+      // render();
   </script>
 </body>
 </html>
