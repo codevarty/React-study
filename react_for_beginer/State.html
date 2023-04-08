@@ -28,7 +28,9 @@
       const onClick = () => {
         // setCount 함수는 counter 데이터를 변환 시키고 리 랜더링 한다.
         // counter의 값을 1씩 증가 시켜 주고 있다.
-        setCounter(counter +1)
+        // setCounter(counter +1); // 원하지 않는 데이터가 나올 수 있음 안전하지 않음
+        // 언제나 현제 state 값을 가져온다.
+        setCounter((current) => current+1); // 현재의 값에 1을 더하는 것 콜백함수를 사용하고 있다 ->안전함
       };
       // 사용자가 보게될 컴포넌트를 반환한다.
       return (<div>
