@@ -9,16 +9,22 @@
   <script type="text/babel">
     const root = document.getElementById("root");
 
+    //stat는 UI를 업데이트를 하기가 좋다.
     const Container =() => {
-      const [minutes, setMinutes] = React.useState(0);
+      const [amount, setAmount] = React.useState(0);
+      const [inverted, setInverted] = React.useState(false);
       //onChange는 업데이트 해주는 것이다.
       const onChange = (event)=> {
         // React는 가짜 이밴트를 만들어 최적화 한다. 이때 target은 자기 자신의 요소를 가리킨다.
         // event.target.value는 input 태그의 value를 가르키고 있다.
-        setMinutes(event.target.value);
+        setAmount(event.target.value);
         // console.log(event.target.value);
       }
-      const reset = () => setMinutes(0); //minutes state를 전부 0으로 바꾼다. -> 초기화
+      const reset = () => setAmount(0); //minutes state를 전부 0으로 바꾼다. -> 초기화
+      const onInvert = () => {
+        setInverted((current) => !current)
+        reset(); // flip을 하면 두 값이 서로 바뀐다. 이를 방지하기 위해 값을 초기화한다.
+        }; //현재 flipped 값을 반대로 한다. true -> false, false -> true
       // 사용자가 보게될 컴포넌트를 반환한다.
       // for은 javascript 용어이다 그래서 htmlFor로 바꿔줘야한다.ad
       // class ==> className
@@ -26,13 +32,26 @@
         <h1 className="hi">Super Converter</h1>
         <div>
           <label /*for -> htmlFor*/ htmlFor="minutes">Minutes</label>    
-          <input value={minutes} id="minutes" placeholder= "Minutes" type="number"  onChange= {onChange} /> {/*onChange 함수 가 없으면 value 값을 변경하지 못함 */}
+          <input value={inverted ? amount* 60 : amount} 
+            id="minutes" 
+            placeholder= "Minutes" 
+            type="number"  
+            onChange= {onChange} 
+            disabled ={inverted} 
+          /> {/*onChange 함수 가 없으면 value 값을 변경하지 못함 */}
         </div>
         <div>
           <label htmlFor="hours">Hours</label>
-          <input /* 분 -> 시로 변환*/ value={Math.round(minutes / 60)} id="hours" placeholder="Hours" type="number" disabled />
+          <input /* 분 -> 시로 변환*/ value={ inverted ? amount : Math.floor(amount / 60)} 
+            id="hours" 
+            placeholder="Hours" 
+            type="number"
+            onChange={onChange}
+            disabled ={!inverted} 
+          />
         </div>
         <button onClick= {reset}>Reset</button>
+        <button onClick={onInvert}>{inverted ? "Turn back" : "Inverted"}</button>
       </div>);
       }
       ReactDOM.createRoot(root).render(<Container />);
