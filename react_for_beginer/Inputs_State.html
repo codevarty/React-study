@@ -8,9 +8,10 @@
 
   <script type="text/babel">
     const root = document.getElementById("root");
-
+    const THREE = 1000;
     //stat는 UI를 업데이트를 하기가 좋다.
-    const Container =() => {
+    //시를 분으로 분을 서로 변환기
+    function MinutesToHours() {
       const [amount, setAmount] = React.useState(0);
       const [inverted, setInverted] = React.useState(false);
       //onChange는 업데이트 해주는 것이다.
@@ -29,7 +30,6 @@
       // for은 javascript 용어이다 그래서 htmlFor로 바꿔줘야한다.ad
       // class ==> className
       return (<div>
-        <h1 className="hi">Super Converter</h1>
         <div>
           <label /*for -> htmlFor*/ htmlFor="minutes">Minutes</label>    
           <input value={inverted ? amount* 60 : amount} 
@@ -54,7 +54,87 @@
         <button onClick={onInvert}>{inverted ? "Turn back" : "Inverted"}</button>
       </div>);
       }
-      ReactDOM.createRoot(root).render(<Container />);
+    // km를 mile로 mile을 km로 서로 변환기
+    function KmToMiles() {
+      const [amount, setAmount] = React.useState(0); //초기값을 0으로 지정
+      const [inverted, setInverted] = React.useState(false); //초기값을 false로 지정
+      /*challenge km -> miles / miles -> km*/
+      // Km -> Miles로 바꾸는 공식: km/1.609
+      // miles -> Km 바꾸는 공식: km * 1.609
+      // value 값이 변경될 수 있도록 하는 함수
+      const onChange = (event) => {
+        setAmount(event.target.value);
+      }
+
+      //값을 0으로 초기화 시키는 함수
+      const reset = () => setAmount(0);
+
+      // inverted 함수
+      const onFlip = () => {
+        setInverted((current) => !current); // 현재 값의 부정형으로 반환
+        reset(); // 값이 바뀌는 것을 방지하기 위해 reset 함수 사용
+      }
+      return (
+        <div>
+          <div /*input 태그*/>
+            <label htmlFor="km">Km</label>
+            <input /*km*/ id="km" 
+              value={inverted ? Math.round(amount * 1.609 * THREE) / THREE : amount} 
+              placeholder="Km"
+              onChange={onChange} 
+              type="number" 
+              disabled={inverted}
+            />
+          </div>
+          <div /*input 태그*/ >
+            <label htmlFor="miles">Miles</label>
+            <input /*miles */ id="miles" 
+              value = {inverted ? amount :Math.round(amount/1.609 * THREE)/ THREE}
+              placeholder="Miles"
+              onChange={onChange}
+              type="number" 
+              disabled={!inverted} 
+              />
+          </div>
+          <div /*button 태그*/>
+            <button /*reset*/onClick={reset} >reset</button>
+            <button /*inverted*/onClick={onFlip}>{inverted ? "Turn back": "Inverted"}</button>
+          </div>
+        </div>
+      );
+    }
+    function App() {
+      // index는 순서를 나타낸다.
+      const [index, setIndex] = React.useState("xx"); // 초기값을 주지 않으면 undefined를 초기값으로 가짐
+      const onSelect = (event) => {
+        setIndex(event.target.value);
+      }
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <select value={index} onChange={onSelect}>
+            <option value="xx">Select Your Units</option>
+            <option value="0">Minutes & Hours</option>
+            <option value="1">Km & Miles</option>
+          </select>
+          <hr/>
+          {/*중괄호 안에는 js로 인식한다.*/
+            // index 가 "0"이면 안에 텍스트 내용을 화면에 보여줌 아니면 null을 반환
+            index === "xx" ? "Please set Your Units" : null
+          }
+          {/*중괄호 안에는 js로 인식한다.*/
+            // index 가 "0"이면 MinutesToHours 컴포넌트 추가 아니면 null을 반환
+            index === "0" ? <MinutesToHours /> : null
+          }
+          {/*중괄호 안에는 js로 인식한다.*/
+            // index 가 "1"이면 KmToMiles 컴포넌트 추가 아니면 null을 반환
+            index === "1" ? <KmToMiles /> : null
+          }
+        </div>
+      );
+    }
+    //최종적으로 랜더링 되는 것은 App이다.
+    ReactDOM.createRoot(root).render(<App />);
 
   </script>
 </body>
