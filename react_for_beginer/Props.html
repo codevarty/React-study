@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="root"></div>
+  <script src ="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.21.4/babel.min.js"></script>
+
+  <script type="text/babel">
+    // Btn 컴포넌트의 속성들은 모두 함수의 인자(arguments)로 간다.
+    //props는 object이다.
+    // 매개변수로는 props 하나만 된다.
+    // {text} == props.text 
+    function Btn({text, big}) {
+      return (
+        // JSX에 style 속성을 줄 수 있다.
+        <button style={{
+          backgroundColor : "tomato",
+          color: "white",
+          padding: "10px 20px",
+          border:0,
+          borderRadius: 10,
+          fontSize: big ? "18px" : "16px"
+        }}>
+        {/*text 속성을 받는다.*/text}
+        </button>
+        );
+    }
+    function App() {
+      return (
+        <div>
+          <Btn text="Save Change" big={true} />
+          <Btn text= "Continue" big={false} />
+        </div>
+      );
+    }
+    //최종적으로 랜더링 되는 것은 App이다.
+    ReactDOM.createRoot(root).render(<App />);
+
+  </script>
+</body>
+</html>
