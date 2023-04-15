@@ -4,6 +4,8 @@
   <div id="root"></div>
   <script src ="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- 사용자가 입력하는 props를 확인해 주는 패키지 -->
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.21.4/babel.min.js"></script>
 
   <script type="text/babel">
@@ -11,7 +13,7 @@
     //props는 object이다.
     // 매개변수로는 props 하나만 된다.
     // {text} == props.text 
-    function Btn({text, changeValue}) {
+    function Btn({text, changeValue, fontSize = 16}) {
       return (
         // JSX에 style 속성을 줄 수 있다.
         <button
@@ -24,6 +26,8 @@
           padding: "10px 20px",
           border:0,
           borderRadius: 10,
+          // fontSize: fontSize와 같다.
+          fontSize,
         }}>
         {/*text 속성을 받는다.*/text}
         </button>
@@ -31,6 +35,13 @@
     }
     // memo 함수는 컴포넌트를 기억하는 의미로 props가 변경되지 않는 다면 re-rendering 하지 않는다.
     // const MemorizedBtn = React.memo(Btn);
+    Btn.propTypes = {
+      // props에 대한 타입을 지정해 줄 수 있다.
+      // isRequired는 필수로 받아야 한다는 의미이다.
+      // 잘못된 props를 받으면 에러 메세지를 보여주지만 실행은 된다.
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.number,
+    }
     function App() {
       // state는 props와 연결되어 있다.
       // props가 변경되는 것은 state가 변경되는 것과 같다.
@@ -38,7 +49,7 @@
       const changeValue = () => setValue("Revert Changes");
       return (
         <div>
-          <Btn /*only props*/text={value} changeValue={changeValue} />
+          <Btn /*only props*/text={value} changeValue={changeValue} fontSize={"10"} />
           <Btn text= "Continue" />
         </div>
       );
