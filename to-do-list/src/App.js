@@ -30,6 +30,10 @@ function App() {
         />
       <button>Add TO DO</button>
       </form>
+      <hr/>
+      <ul>
+        {toDos.map((item, index) => <li/*li 요소에는 key(고유)값이 필요하다*/ key={index}>{item}</li> )}
+      </ul>
     </div>
   );
 }
