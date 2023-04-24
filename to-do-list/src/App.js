@@ -1,10 +1,17 @@
+import "./App.css";
 import { useState, useEffect } from "react";
 
 // TO DO LIST
 function App() {
   const [toDo, setToDO] = useState("");
   const [toDos, setToDos] = useState([]); // 여러 개의 toDo를 저장할 배열
+  const [isDeleted, setIsDeleted] = useState(false); // 삭제 여부를 저장할 상태
   const onChange = (event) => setToDO(event.target.value);
+  const onDelete = (event) => {
+    event.preventDefault();
+    setIsDeleted(true);
+    console.log(event);
+  }
   const onSubmit = (event) => {
     event.preventDefault();
     // toDo가 비어있으면 종료한다.
@@ -31,9 +38,13 @@ function App() {
       <button>Add TO DO</button>
       </form>
       <hr/>
-      <ul>
-        {toDos.map((item, index) => <li/*li 요소에는 key(고유)값이 필요하다*/ key={index}>{item}</li> )}
-      </ul>
+      <div className="list-container">
+        {toDos.map((item, index) => <div className="list" key={index}>
+          ({index+1})
+          {" "+item}
+          <button onClick={onDelete}>delete</button>
+          </div>)}
+      </div>
     </div>
   );
 }

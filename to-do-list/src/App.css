@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
   min-height: 100vh;
+  background: #2f2f2f;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0.6rem 0;
+}
+hr {
+  border: 1.2px solid #fff;
+}
+
+:is(button, input) {
+  color: #222;
+  font-weight: 400;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+button {
+  padding: 0.5rem 0.6rem;
+}
+input {
+  padding: 0.5rem 0.6rem;
+  width: 20rem;
+}
+.list-container {
+  margin: 0.2rem auto;
   display: flex;
   flex-direction: column;
+}
+.list {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: #fff;
+  padding: 0.2rem 2rem;
+  border-radius: 0.2rem;
+  border: 1px solid #fff;
+  color: #222;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0.5rem 0.4rem;
+}
+/* 리스트 선택시 나타나는 것 */
+.list:hover {
+  border: 1px solid #222;
+  /* cursor: pointer; */
 }
 
-.App-link {
-  color: #61dafb;
+.list > button {
+  background: rgb(255, 104, 104);
+  border: none;
+  border-radius: 0.2rem;
+  font-weight: 700;
+  cursor: pointer;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 크기가 달라짐*/
+.list > button:hover {
+  background: rgb(255, 0, 0);
 }
