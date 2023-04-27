@@ -5,12 +5,14 @@ import { useState, useEffect } from "react";
 function App() {
   const [toDo, setToDO] = useState("");
   const [toDos, setToDos] = useState([]); // 여러 개의 toDo를 저장할 배열
-  const [isDeleted, setIsDeleted] = useState(false); // 삭제 여부를 저장할 상태
   const onChange = (event) => setToDO(event.target.value);
+  // 요소를 삭제하는 함수
   const onDelete = (event) => {
-    event.preventDefault();
-    setIsDeleted(true);
-    console.log(event);
+    setToDos((currentValue) => {
+      // console.log(event.target.parentNode)
+      currentValue.splice(event.target.parentNode.id, 1); // 부모 요솟의 id를 가져와서 해당 요소를 삭제한다.
+      return [...currentValue]; // toDOs의 에 반영된다.
+    });
   }
   const onSubmit = (event) => {
     event.preventDefault();
@@ -39,10 +41,10 @@ function App() {
       </form>
       <hr/>
       <div className="list-container">
-        {toDos.map((item, index) => <div className="list" key={index}>
+        {toDos.map((item, index) => <div className="list" id={index} key={index}>
           ({index+1})
           {" "+item}
-          <button onClick={onDelete}>delete</button>
+          <button /*remove this parents tags */ onClick={onDelete}>delete</button>
           </div>)}
       </div>
     </div>
