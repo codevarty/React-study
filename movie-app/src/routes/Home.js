@@ -19,9 +19,11 @@ function Home() {
   return (
     <div>
       {loading ? "Loading..." : <div>{
-      movies.map((movie) => ( 
+      movies.map((movie) => (
+        movie.medium_cover_image &&
         <Movie
           key={movie.id}
+          id={movie.id}
         /*props */ coverImg={movie.medium_cover_image} 
           title={movie.title} 
           summary={movie.summary} 

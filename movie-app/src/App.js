@@ -9,10 +9,12 @@ import Detail from "./routes/Detail";
 import Home from "./routes/Home";
 /**Movie App */
 // map 함수는 새로운 배열을 반환한다.
+// path에 :id를 넣으면 id값을 받는 의미이다.
+//:를 넣지 않으면 텍스트 id가 된다.
 function App() {
   return <Router>
     <Switch>
-      <Route path="/movie">
+      <Route path="/movie/:id">
         <Detail/>
       </Route>
       <Route /*Home Route*/ path="/">
