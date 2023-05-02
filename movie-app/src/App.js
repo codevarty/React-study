@@ -12,7 +12,7 @@ import Home from "./routes/Home";
 // path에 :id를 넣으면 id값을 받는 의미이다.
 //:를 넣지 않으면 텍스트 id가 된다.
 function App() {
-  return <Router>
+  return <Router basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route path="/movie/:id">
         <Detail/>
