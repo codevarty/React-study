@@ -26,6 +26,7 @@ function Detail() {
         title={movie.title}
         rating={movie.rating}
         description={movie.description_full}
+        downCount={movie.download_count}
         coverImg={movie.large_cover_image}
       />
       </div>}
