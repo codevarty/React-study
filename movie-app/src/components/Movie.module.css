@@ -1,0 +1,29 @@
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #fff;
+  padding: 10px;
+  margin: 20px;
+
+}
+
+/*영화 이미지 크기를 작게 표시하기*/
+.movieImg {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin:0  10px;
+}
+
+.content {
+  margin: 0;
+  /* border : 2px solid #fff; */
+  width: auto;
+  padding: 10px;
+}
+
+.movie_list {
+  margin-top: 10px;
+  margin-left: 15px;
+}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieDetail from "../components/MovieDetail";
+import styles from "./style/Detail.module.css";
 function Detail() {
   const [loading, setLoading] = useState("true");
   const [movie, setMovie] = useState([]);
@@ -19,7 +20,7 @@ function Detail() {
     getMovie();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // 한번만 실행
-  return (<div>
+  return (<div className={styles.container}>
     {loading ? "Loading..." : <div>
       <MovieDetail 
         key={movie.id}
@@ -27,7 +28,7 @@ function Detail() {
         rating={movie.rating}
         description={movie.description_full}
         downCount={movie.download_count}
-        coverImg={movie.large_cover_image}
+        coverImg={movie.medium_cover_image}
       />
       </div>}
   </div>)

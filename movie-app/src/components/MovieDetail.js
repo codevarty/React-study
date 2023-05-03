@@ -2,7 +2,7 @@ import protoTypes from "prop-types";
 import {Link} from "react-router-dom"
 function MovieDetail({title, rating,description,downCount,coverImg}) {
 return <div>
-  <h1>Title: {title}</h1>
+  <h1>[{title}]</h1>
   <Link to="/">Home</Link>
   <h2>Rating: {rating}</h2>
   <h2>Movie description:</h2>
