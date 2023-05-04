@@ -21,7 +21,7 @@ function Detail() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // 한번만 실행
   return (<div className={styles.container}>
-    {loading ? "Loading..." : <div>
+    {loading ? <span className={styles.loading}>Loading...</span> : <div className={styles.movie_box}>
       <MovieDetail 
         key={movie.id}
         title={movie.title}
