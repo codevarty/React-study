@@ -6,6 +6,7 @@
 
 .loading {
   display: flex;
+  color:#00e25a;
   justify-content: center;
   align-items: center;
   height: 100vh;
