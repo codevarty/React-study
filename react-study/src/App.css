@@ -1,0 +1,26 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 카드 형태로 그림자 설정 */
+.App {
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+  box-shadow: 0 2px 2px #ccc;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 400px;
+}
+
+ul {
+  padding-left: 20px;
+}
