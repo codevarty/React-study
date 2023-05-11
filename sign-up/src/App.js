@@ -16,10 +16,10 @@ function App() {
             <input id="id"type="text"/>
           </div>
           <div id="passwd_line_wrap">
-          <input id="pw" type="text"/>
+          <input id="pw" type="password"/>
+          </div>
           <div>
             <button>로그인</button>
-          </div>
           </div>
         </div>
       </form>
