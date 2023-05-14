@@ -23,6 +23,9 @@ function App() {
   // 이 함수는 form 태그의 onSubmit 이벤트에 등록되어 있다.
   const onSubmit = (e) => {
     e.preventDefault();
+    // 아이디 비밀번호 초기화
+    setId('');
+    setPw('');
     // console.log(id, pw);
     if (id ==='' || pw ==='') {
       alert('아이디 및 비밀번호를 입력하세요');
@@ -36,7 +39,7 @@ function App() {
   }
   return (
     <div className="content">
-      <div className="login">로그인</div>
+      <div className="login-title">로그인</div>
       <form onSubmit={onSubmit}>
         <div className="panel">
           <div id="id_line_wrap">
@@ -45,7 +48,7 @@ function App() {
           <div id="passwd_line_wrap">
           <input id="pw" type="password" value={pw} onChange={onChangePw} />
           </div>
-          <div>
+          <div id="check_wrap">
             <input type="checkbox" name="id_store" id="id_store" />
             <label htmlFor='id_store'> 아이디 저장</label>
           </div>

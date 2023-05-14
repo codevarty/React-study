@@ -14,22 +14,51 @@ body {
   align-items: center;
 }
 
-.content {
-  padding: 10px;
+.login-title {
+  position: relative;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 12px;
+  background: #fff;
   border: 1px solid #222;
+  border-bottom: none;
+  border-radius: 6px 6px 0px 0px;
+}
+.login-title::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+}
+.panel {
+  padding: 25px;
+  border: 1px solid #222;
+  border-radius: 0px 6px 6px 6px;
   background: #fff;
   height: auto;
   width: auto;
 }
-.content div {
-  margin: 16px;
+#check_wrap {
+  margin: 10px 0;
 }
+
+#check_wrap label {
+  cursor: pointer;
+}
+
 #id_line_wrap {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px;
   border: 1px solid #222;
+  border-radius: 4px 4px 0px 0px;
 }
 #passwd_line_wrap {
   display: flex;
@@ -37,19 +66,32 @@ body {
   align-items: center;
   padding: 15px;
   border: 1px solid #222;
+  border-radius: 0px 0px 4px 4px;
 }
 
-.content input {
+/*id_line_wrap 클릭 후 윤곽선 계속 변경*/
+:is(#id_line_wrap, #passwd_line_wrap):focus-within {
+  border-color:  #2dac6f;
+}
+
+.panel input:not([type="checkbox"]) {
   border: 0px;
-  outline: none;  
+  width: 200px;
+  height: 20px;
+  outline: none;
+  cursor: pointer;
 }
 
 .content button {
   margin-top: 10px;
   width: 100%;
-  height: 2rem;
+  border-radius: 6px;
+  border: 1px solid #222;
+  cursor: pointer;
+  height: 50px;
 }
 
 .panel {
   font-size: 0.8rem;
+  font-weight: 500;
 }
