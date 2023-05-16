@@ -10,6 +10,7 @@ import { checkId, checkPw } from './components/SignUpForm';
 function App() {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
+  // const [remberId, setRemberId] = useState(false);
   // console.log(setId)
 
   const onChangeId = (e) => {
@@ -43,17 +44,21 @@ function App() {
       <form onSubmit={onSubmit}>
         <div className="panel">
           <div id="id_line_wrap">
-            <input id="id"type="text" value={id} onChange={onChangeId}/>
+            <input id="id"type="text" value={id} onChange={onChangeId} placeholder='input email'/>
           </div>
           <div id="passwd_line_wrap">
-          <input id="pw" type="password" value={pw} onChange={onChangePw} />
+          <input id="pw" type="password" value={pw} onChange={onChangePw} placeholder='input password' />
           </div>
           <div id="check_wrap">
-            <input type="checkbox" name="id_store" id="id_store" />
+            <input type="checkbox" name="id_store" id="id_store"  />
             <label htmlFor='id_store'> 아이디 저장</label>
           </div>
           <div>
             <button>로그인</button>
+            <div className='link'>
+            <a href='/#'>아이디/비밀번호 찾기</a>
+            <a href="/#">회원가입</a>
+            </div>
           </div>
         </div>
       </form>
